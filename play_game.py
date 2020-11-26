@@ -29,7 +29,7 @@ class PlayGame():
             self.dice_remaining = self.current_roll.dice_remaining
 
             if self.dice_remaining == 0:
-                print("FORCED CONTINUE")
+                #print("FORCED CONTINUE")
                 self.resets += 1
                 self.dice_remaining = 5
 
@@ -59,15 +59,15 @@ class PlayGame():
         rolls until ending condition is met
         """
         while self.continued is True:
-            print("Roll Number: ", self.rolls, " dice_rolled: ", self.dice_remaining)
+            #print("Roll Number: ", self.rolls, " dice_rolled: ", self.dice_remaining)
 
             self.current_roll = DiceRolls(self.dice_remaining).run()
             self.check_for_macke()
             self.account_for_new_score()
             self.method_interpreter()
 
-            print("Points: ", self.current_roll.score, " dice_remaining: ", self.dice_remaining)
-            print("total points: ", self.total_score)
+            #print("Points: ", self.current_roll.score, " dice_remaining: ", self.dice_remaining)
+            #print("total points: ", self.total_score)
 
 
 
