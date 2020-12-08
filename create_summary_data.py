@@ -11,8 +11,8 @@ class CreateSummaryData():
     ):
         """
         This class runs n sessions of a certain method and threshold.
-        if threshold="multiple" the run() method will set the threshold to range(100,1050,50)
-        and return n*20 rows
+        if threshold="multiple" the threshold will be set to range(100,1050,50)
+        and return n*19 rows
 
         :param n: int, number of sessions to play
         :param method: str, method of the sessions to play

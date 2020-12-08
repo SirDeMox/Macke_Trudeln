@@ -6,8 +6,8 @@ class DiceRolls():
                  number_dice=None,
                  fixed_rolls=None):
         """
-        This function rolls dice
-        :param number_dice: a integer between 1 and 5 (including)
+        This class rolls n dice.
+        :param number_dice: n, a integer between 1 and 5 (including)
         :param fixed_rolls: a list of 6 integers, representing the dice sides 1-6
         """
 

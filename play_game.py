@@ -7,7 +7,7 @@ class PlayGame():
                  threshold=300,
                  special=[],):
         """
-        This method plays a game of Macke.
+        This class plays a game of Macke.
 
         :param method: either "earlystop" or "nrolls"
         :param threshold: a integer which goes with the method
