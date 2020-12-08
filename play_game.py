@@ -2,7 +2,18 @@ from dice_rolls import DiceRolls
 
 
 class PlayGame():
-    def __init__(self, method=None, threshold=None):
+    def __init__(self,
+                 method="earlystop",
+                 threshold=300,
+                 special=[],):
+        """
+        This method plays a game of Macke.
+
+        :param method: either "earlystop" or "nrolls"
+        :param threshold: a integer which goes with the method
+        :param special: a list containing special options as strings
+        """
+
         self.rolls = 0
         self.resets = 0
         self.total_score = 0
@@ -14,6 +25,11 @@ class PlayGame():
         self.threshold = threshold
         self.current_roll = None
         self.stopping_reason = None
+        self.curve_state = None
+        if "run4s" in special:
+            self.run4s = True
+        else:
+            self.run4s = None
 
     def check_for_macke(self):
         if self.current_roll.macke is True:
@@ -29,9 +45,9 @@ class PlayGame():
             self.dice_remaining = self.current_roll.dice_remaining
 
             if self.dice_remaining == 0:
-                #print("FORCED CONTINUE")
                 self.resets += 1
                 self.dice_remaining = 5
+
 
     def method_interpreter(self):
         """
@@ -40,15 +56,20 @@ class PlayGame():
         _nrolls_: stops ones you rolled n (threshold) times
         """
 
+        dont_stop_at = [5]
+
+        if self.run4s:
+            dont_stop_at.append(4)
+
         if self.method == "earlystop":
             if self.total_score >= self.threshold \
-                    and (not self.dice_remaining == 5):
+                    and (not self.dice_remaining in dont_stop_at):
                 self.continued = False
                 self.stopping_reason = "Earlystop"
 
         if self.method == "nrolls":
             if self.rolls >= self.threshold \
-                    and (not self.dice_remaining == 5):
+                    and (not self.dice_remaining in dont_stop_at):
                 self.continued = False
                 self.stopping_reason = "Nrolls"
 
@@ -59,15 +80,11 @@ class PlayGame():
         rolls until ending condition is met
         """
         while self.continued is True:
-            #print("Roll Number: ", self.rolls, " dice_rolled: ", self.dice_remaining)
-
             self.current_roll = DiceRolls(self.dice_remaining).run()
             self.check_for_macke()
             self.account_for_new_score()
             self.method_interpreter()
 
-            #print("Points: ", self.current_roll.score, " dice_remaining: ", self.dice_remaining)
-            #print("total points: ", self.total_score)
 
 
 

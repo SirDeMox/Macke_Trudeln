@@ -9,7 +9,6 @@ def test_init_parsing():
     assert rolls.count_rolled_dice == 5
     assert rolls.dice_remaining is None
     assert rolls.score is None
-    assert rolls.previous_score is None
 
 def test_n_dice_are_rolled():
     rolls = DiceRolls(5)

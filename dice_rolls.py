@@ -4,8 +4,12 @@ import random as rd
 class DiceRolls():
     def __init__(self,
                  number_dice=None,
-                 fixed_rolls=None,
-                 _previous_score=None):
+                 fixed_rolls=None):
+        """
+        This function rolls dice
+        :param number_dice: a integer between 1 and 5 (including)
+        :param fixed_rolls: a list of 6 integers, representing the dice sides 1-6
+        """
 
         self.roll_results = {
             1: 0,
@@ -24,7 +28,6 @@ class DiceRolls():
             self.count_rolled_dice = number_dice
         self.dice_remaining = None
         self.score = None
-        self.previous_score = _previous_score
 
     def roll_dice(self):
         """

@@ -9,6 +9,7 @@ def test_game_init_parsing():
     assert pg.threshold == 300
 
 def test_check_for_macke_on_no_macke():
+
     pg = PlayGame()
     _fixed_rolls = [1, 0, 0, 3, 1, 0]
     pg.current_roll = DiceRolls(fixed_rolls=_fixed_rolls).run()
@@ -100,5 +101,34 @@ def test_nrolls_with_enough_rolls():
 
     assert nrolls_pg.rolls == nrolls_pg.threshold
     assert nrolls_pg.continued is False
+
+def test_run4s_on_4_remaining_dice():
+    run4s_game = PlayGame(method="earlystop", threshold=300, special=["run4s"])
+    _fixed_rolls = [1, 2, 2, 0, 0, 0] # 4 remaining dice
+    run4s_game.total_score = 500 # score set to 500
+    run4s_game.current_roll = DiceRolls(fixed_rolls=_fixed_rolls).run()
+
+    run4s_game.check_for_macke()
+    run4s_game.account_for_new_score()
+    run4s_game.method_interpreter()
+
+    assert run4s_game.dice_remaining == 4
+    assert run4s_game.total_score >= run4s_game.threshold
+    assert run4s_game.continued == True
+
+
+def test_not_run4s_on_4_remaining_dice():
+    run4s_game = PlayGame(method="earlystop", threshold=300, special=[])
+    _fixed_rolls = [1, 2, 2, 0, 0, 0]  # 4 remaining dice
+    run4s_game.total_score = 500  # score set to 500
+    run4s_game.current_roll = DiceRolls(fixed_rolls=_fixed_rolls).run()
+
+    run4s_game.check_for_macke()
+    run4s_game.account_for_new_score()
+    run4s_game.method_interpreter()
+
+    assert run4s_game.dice_remaining == 4
+    assert run4s_game.total_score >= run4s_game.threshold
+    assert run4s_game.continued == False
 
 #todo test stopping reason
