@@ -83,16 +83,11 @@ class DiceRolls():
 
     def evaluate_points(self):
         """
-            This function evaluates a dice roll:
+            This function evaluates a dice roll and scores points:
             counts 50 points for a 5
             counts 100 points for a 1
             counts 100*pips for a three-of-a-kind
             counts 1000 for three 1s
-            returns number of dice rolled
-            returns points (score)
-            returns if there was no score (macke)
-            returns number of used dice in scoring
-            returns number of remaining dice (non-scoring dice)
         """
 
         points_1s = self.roll_results[1] * 100
@@ -108,6 +103,16 @@ class DiceRolls():
         self.score = points_1s + points_5s + points_toaks
 
     def run(self):
+        """
+        This method
+        - rolls dice if wanted,
+        - evaluates macke,
+        - cleans toaks,
+        - counts remaining dice and
+        - scores points before
+        - returning itself
+        :return: a class of DiceRolls
+        """
 
         if self.wanted_rolls:
             self.set_fixed_rolls()
@@ -120,13 +125,3 @@ class DiceRolls():
         self.evaluate_points()
 
         return self
-
-    def print(self):
-        print(
-            self.roll_results,
-            self.toak,
-            self.score,
-            self.macke,
-            self.dice_remaining
-        )
-

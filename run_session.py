@@ -20,8 +20,8 @@ class RunSession():
         self.method = method
         self.threshold = threshold
         self.final_score = 0
-        self.macke_count = 0
-        self.game_number = 0
+        self.macke_counter = 0
+        self.game_counter = 0
         self.current_game = None
         self.missed_points = 0
         self.threshold_curved = None
@@ -62,6 +62,14 @@ class RunSession():
 
 
     def play_until_5k(self):
+        """
+        this method runs PlayGame and scores the games until it reached 5k points.
+
+        it runs a game, scores the points in final_score and ++ the game_counter counter
+        if the game ended in a Macke, it will ++ the macke_counter
+
+        :return: None
+        """
         while self.final_score < 5000:
             #todo curve interpreter here!?
             #self.curve_state_interpreter()
@@ -75,10 +83,10 @@ class RunSession():
 
             self.current_game.run()
             self.final_score += self.current_game.total_score
-            self.game_number += 1
+            self.game_counter += 1
 
             if self.current_game.stopping_reason == "Macke":
-                self.macke_count += 1
+                self.macke_counter += 1
                 self.missed_points += self.current_game.score_before_end
 
     def create_output_dict(self):
@@ -87,7 +95,7 @@ class RunSession():
             "threshold": self.threshold,
             "special": self.special,
             "final_score": self.final_score,
-            "games_n": self.game_number,
-            "macke_count": self.macke_count,
+            "games_n": self.game_counter,
+            "macke_counter": self.macke_counter,
             "missed_points": self.missed_points,
         }
