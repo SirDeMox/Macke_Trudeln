@@ -1,7 +1,7 @@
 from play_game import PlayGame
 
 
-class RunSession():
+class RunSession:
     def __init__(self,
                  method="earlystop",
                  threshold=300,

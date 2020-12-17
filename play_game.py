@@ -1,7 +1,7 @@
 from dice_rolls import DiceRolls
 
 
-class PlayGame():
+class PlayGame:
     def __init__(self,
                  method="earlystop",
                  threshold=300,

@@ -3,7 +3,7 @@ import pandas as pd
 from run_session import RunSession
 
 
-class CreateSummaryData():
+class CreateSummaryData:
     def __init__(
             self,
             n=10,
