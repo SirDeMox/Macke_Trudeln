@@ -1,7 +1,7 @@
 import random as rd
 
 
-class DiceRolls():
+class DiceRolls:
     def __init__(self,
                  number_dice=None,
                  fixed_rolls=None):

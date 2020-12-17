@@ -1,13 +1,15 @@
-from run_session import RunSession
 import pandas as pd
 
-class CreateSummaryData():
+from run_session import RunSession
+
+
+class CreateSummaryData:
     def __init__(
             self,
             n=10,
             method="earlystop",
             threshold=300,
-            special=[]
+            special=None
     ):
         """
         This class runs n sessions of a certain method and threshold.
@@ -20,6 +22,8 @@ class CreateSummaryData():
         :param special: a list containing special options as strings
         """
 
+        if special is None:
+            special = []
         self.n = n
         self.method = method
         self.threshold = threshold
@@ -38,7 +42,7 @@ class CreateSummaryData():
                 a_session = RunSession(
                     method=self.method,
                     threshold=a_threshold,
-                    special=self.special,)
+                    special=self.special, )
                 a_session.play_until_5k()
                 results_list.append(a_session.create_output_dict())
 

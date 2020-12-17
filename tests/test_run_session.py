@@ -1,6 +1,8 @@
-import unittest
 import random as rd
+import unittest
+
 from run_session import RunSession
+
 
 class MyTestCase(unittest.TestCase):
     def test_session_setup(self):
@@ -20,7 +22,7 @@ class MyTestCase(unittest.TestCase):
     def test_curve(self):
         session = RunSession()
 
-        self.assertTrue(len(session.curve)==21)
+        self.assertTrue(len(session.curve) == 21)
 
         actual = max(session.curve.values())
         expected = 5000
@@ -34,14 +36,12 @@ class MyTestCase(unittest.TestCase):
 
     def test_curve_gains(self):
         session = RunSession()
-        gains = [session.curve[roll+1] - session.curve[roll] \
-                             for roll in session.curve \
-                             if roll+1 <= len(session.curve)-1]
-        message = "All gains on the curve must be positive, {negative_gain} is not".\
-            format(negative_gain = [gain for gain in gains if gain<0])
+        gains = [session.curve[roll + 1] - session.curve[roll] \
+                 for roll in session.curve \
+                 if roll + 1 <= len(session.curve) - 1]
+        message = "All gains on the curve must be positive, {negative_gain} is not". \
+            format(negative_gain=[gain for gain in gains if gain < 0])
         self.assertTrue(all([gain >= 0 for gain in gains]), message)
-
-
 
     def test_play_until_5k(self):
         rd.seed(42)
