@@ -46,7 +46,7 @@ class RunSession():
              17: 4250,
              18: 4500,
              19: 4750,
-             20: 5000}
+             20: 5000,}
 
     def curve_state_interpreter(self):
         # calc diff curve versus total

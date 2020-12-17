@@ -107,7 +107,7 @@ class DiceRolls():
         This method
         - rolls dice if wanted,
         - evaluates macke,
-        - cleans toaks,
+        - detect toaks,
         - counts remaining dice and
         - scores points before
         - returning itself
