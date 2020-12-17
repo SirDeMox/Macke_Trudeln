@@ -1,6 +1,7 @@
-
 *.xml
 *.ipynb
 *.iml
 *.pyc
 *.csv
+
+venv/
