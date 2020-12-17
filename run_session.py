@@ -53,12 +53,14 @@ class RunSession:
         #   raise/lower threshold
         # if diff < Y:
         #   raise/lower threshold
+        # TODO add curve_state to class to show data structure of class in one place
         if self.curve_state == "behind":
             self.threshold_curved = 500
 
         if self.curve_state == "ahead":
             self.threshold_curved = 250
 
+    # TODO use 5k as a parameter
     def play_until_5k(self):
         """
         this method runs PlayGame and scores the games until it reached 5k points.
@@ -87,6 +89,7 @@ class RunSession:
                 self.macke_counter += 1
                 self.missed_points += self.current_game.score_before_end
 
+    # TODO not needed as you can return your class as dict with RunSession.__dict__
     def create_output_dict(self):
         return {
             "method": self.method,

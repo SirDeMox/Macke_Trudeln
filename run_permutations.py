@@ -2,6 +2,8 @@ import random as rd
 
 import pandas as pd
 
+# TODO maybe move this to a jupyter notebook
+
 # load results
 df = pd.read_csv("early_stop_results_10k.csv")
 
