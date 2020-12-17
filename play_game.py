@@ -5,7 +5,7 @@ class PlayGame:
     def __init__(self,
                  method="earlystop",
                  threshold=300,
-                 special=[], ):
+                 special=None, ):
         """
         This class plays a game of Macke.
 
@@ -14,6 +14,8 @@ class PlayGame:
         :param special: a list containing special options as strings
         """
 
+        if special is None:
+            special = []
         self.rolls = 0
         self.resets = 0
         self.total_score = 0

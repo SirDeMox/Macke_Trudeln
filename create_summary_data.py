@@ -9,7 +9,7 @@ class CreateSummaryData:
             n=10,
             method="earlystop",
             threshold=300,
-            special=[]
+            special=None
     ):
         """
         This class runs n sessions of a certain method and threshold.
@@ -22,6 +22,8 @@ class CreateSummaryData:
         :param special: a list containing special options as strings
         """
 
+        if special is None:
+            special = []
         self.n = n
         self.method = method
         self.threshold = threshold

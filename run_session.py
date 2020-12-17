@@ -5,7 +5,7 @@ class RunSession:
     def __init__(self,
                  method="earlystop",
                  threshold=300,
-                 special=[], ):
+                 special=None, ):
         """
         This class runs games until it reaches 5k total_score
             and returns a summary of all games played
@@ -14,6 +14,8 @@ class RunSession:
         :param threshold: a integer which goes with the method
         :param special: a list containing special options as strings
         """
+        if special is None:
+            special = []
         self.method = method
         self.threshold = threshold
         self.final_score = 0
