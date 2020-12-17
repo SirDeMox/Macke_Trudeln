@@ -1,5 +1,7 @@
-from run_session import RunSession
 import pandas as pd
+
+from run_session import RunSession
+
 
 class CreateSummaryData():
     def __init__(
@@ -38,7 +40,7 @@ class CreateSummaryData():
                 a_session = RunSession(
                     method=self.method,
                     threshold=a_threshold,
-                    special=self.special,)
+                    special=self.special, )
                 a_session.play_until_5k()
                 results_list.append(a_session.create_output_dict())
 

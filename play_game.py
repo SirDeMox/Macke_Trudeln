@@ -5,7 +5,7 @@ class PlayGame():
     def __init__(self,
                  method="earlystop",
                  threshold=300,
-                 special=[],):
+                 special=[], ):
         """
         This class plays a game of Macke.
 
@@ -71,7 +71,6 @@ class PlayGame():
                 self.resets += 1
                 self.dice_remaining = 5
 
-
     def method_interpreter(self):
         """
         this method evaluates a gamestate based on the chosen method and specials
@@ -101,7 +100,7 @@ class PlayGame():
                 self.continued = False
                 self.stopping_reason = "Nrolls"
 
-        #todo compare against curve
+        # todo compare against curve
 
     def run(self):
         """
@@ -113,7 +112,3 @@ class PlayGame():
             self.check_for_macke()
             self.account_for_new_score()
             self.method_interpreter()
-
-
-
-

@@ -1,5 +1,7 @@
 import unittest
+
 from create_summary_data import CreateSummaryData
+
 
 class MyTestCase(unittest.TestCase):
     def test_single_threshold_parsing(self):
@@ -13,7 +15,7 @@ class MyTestCase(unittest.TestCase):
         self.assertEqual(a_summary.threshold_range, range(100, 1050, 50))
 
     def test_run_on_10_sessions(self):
-        _n=2
+        _n = 2
         a_summary = CreateSummaryData(n=_n, threshold=300)
         a_summary_df = a_summary.run()
         threshold_count = len(a_summary.threshold_range)
@@ -26,7 +28,8 @@ class MyTestCase(unittest.TestCase):
         a_summary_df = a_summary.run()
         threshold_count = len(a_summary.threshold_range)
         self.assertEqual(threshold_count, 19)
-        self.assertEqual(len(a_summary_df), _n*threshold_count)
+        self.assertEqual(len(a_summary_df), _n * threshold_count)
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -1,14 +1,11 @@
 from play_game import PlayGame
-import pandas as pd
-
-from play_game import PlayGame
 
 
 class RunSession():
     def __init__(self,
                  method="earlystop",
                  threshold=300,
-                 special=[],):
+                 special=[], ):
         """
         This class runs games until it reaches 5k total_score
             and returns a summary of all games played
@@ -27,26 +24,26 @@ class RunSession():
         self.threshold_curved = None
         self.special = special
         self.curve = {0: 0,
-             1: 250,
-             2: 500,
-             3: 750,
-             4: 1000,
-             5: 1250,
-             6: 1500,
-             7: 1750,
-             8: 2000,
-             9: 2250,
-             10: 2500,
-             11: 2750,
-             12: 3000,
-             13: 3250,
-             14: 3500,
-             15: 3750,
-             16: 4000,
-             17: 4250,
-             18: 4500,
-             19: 4750,
-             20: 5000,}
+                      1: 250,
+                      2: 500,
+                      3: 750,
+                      4: 1000,
+                      5: 1250,
+                      6: 1500,
+                      7: 1750,
+                      8: 2000,
+                      9: 2250,
+                      10: 2500,
+                      11: 2750,
+                      12: 3000,
+                      13: 3250,
+                      14: 3500,
+                      15: 3750,
+                      16: 4000,
+                      17: 4250,
+                      18: 4500,
+                      19: 4750,
+                      20: 5000, }
 
     def curve_state_interpreter(self):
         # calc diff curve versus total
@@ -60,7 +57,6 @@ class RunSession():
         if self.curve_state == "ahead":
             self.threshold_curved = 250
 
-
     def play_until_5k(self):
         """
         this method runs PlayGame and scores the games until it reached 5k points.
@@ -71,9 +67,9 @@ class RunSession():
         :return: None
         """
         while self.final_score < 5000:
-            #todo curve interpreter here!?
-            #self.curve_state_interpreter()
-            #replace threshold below
+            # todo curve interpreter here!?
+            # self.curve_state_interpreter()
+            # replace threshold below
 
             self.current_game = PlayGame(
                 method=self.method,
