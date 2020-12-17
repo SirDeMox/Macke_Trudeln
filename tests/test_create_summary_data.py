@@ -5,9 +5,12 @@ from create_summary_data import CreateSummaryData
 
 class MyTestCase(unittest.TestCase):
     def test_single_threshold_parsing(self):
-        a_summary = CreateSummaryData(threshold=300)
-        self.assertEqual(a_summary.threshold, 300)
-        self.assertEqual(a_summary.threshold_range, [300])
+        expected_threshold = 300
+        expected_threshold_range = [300]
+        actual = CreateSummaryData(threshold=300)
+        self.assertEqual(actual.threshold, expected_threshold)
+        self.assertEqual(actual.threshold_range, expected_threshold_range)
+        # TODO add expected, actual pattern to other tests
 
     def test_multiple_threshold_parsing(self):
         a_summary = CreateSummaryData(threshold="multiple")
